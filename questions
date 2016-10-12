@@ -1,0 +1,90 @@
+question 1
+	How many "types" of beer are there? 
+		2
+		10
+		30
+		50+
+	correct answer 2
+	all beers boil down to ales or lagers
+question 2
+	What does IPA stand for?(trick question)
+		Imperial Pale Ale
+		India Pale Ale
+		Indian Pale Ale
+		Imported Pale Ale
+	correct answer India
+	From beer that shipped to India loaded with hops to keep from spoiling during the trip
+question 3
+	What is the earlist estimated year beer is thought to have been made?
+		9500 BC
+		7000 BC
+		4000 BC 
+		2500 BC
+	Correct answer 9500
+	it is suspected humans first fermented grains around this time. 7,500-5,000 BC is the oldest confermed fermented beverage
+question 4
+	What is the scientific name for the study of beer?
+		Oenology
+		Rheology
+		Zythology
+		Zymology
+	Correct answer Zythology
+	Zythology is the study of beer! Rheology,Oenology,Zymology are the studies of Liquids, Wine, and Fermentation respectivly.
+question 5
+	Which country consumes the most beer per person?
+		Ireland
+		Germany
+		Czech Republic
+		United States
+	Correct answer Czech
+
+question 6
+	What or rather whom were Brewsters?
+		Male equivelent of mondern brew masters
+		Females in charge of everything brewing
+		Bartenders
+		Monder equivent of "Beer Snob"
+	Correct answer Females
+	For eons women were in charge of every brew process. In some cultures only women could handle beer until served or sold.
+question 7
+	Which Country makes the most beer?
+		Czech Republic
+		United States
+		Germany
+		China
+	Correct answer China
+	China produces about 12 Billion gallons! The USA is #2 with 5 Billion gallons.
+question 8
+	What is the differance between Ales and Lagers?
+		Ales are light while lagers Dark
+		Lagers have higher alcohol %
+		Ale yeast ferment on top while Lager yeast sinks
+		Lagers have more variety then Ales
+	Correct Answer #3
+	The only true differance is that the yeasts ferment at different temperatures and differnt places.
+question 9
+	What is the top selling beer in the USA?
+		Miller Lite
+		Bud Light
+		Coors Light(see a trend here?)
+		Budweiser
+	corrent answer Bud Light
+	Bud Light is the top selling beer in the USA, Coors Light is #2, Miller Lite #3 and Budweiser at #4.
+question 10
+	How many seconds does it take to pour a Guiness
+		62
+		90
+		120
+		119.5
+	correct answer 119.5
+	The Perfect Pour!
+
+	var template ='<form id="js-form">'+
+				'<p id="question">'+ questions[questionCount].questionText +'</p>'+
+				'<input type="radio" name="answer" class="option1 yay" id="ans" value="yup" />'+"<span class='option1'>"+ questions[questionCount].answerOptions[0] +'</span>' +'<br>'+
+				'<input type="radio" name="answer" class="option2 yay" id="ans" value="nope" />'+"<span class='option1'>"+ questions[questionCount].answerOptions[1] +'</span>' +'<br>'+
+				'<input type="radio" name="answer" class="option3 yay" id="ans" value="nope" />'+"<span class='option1'>"+ questions[questionCount].answerOptions[2] +'</span>' +'<br>'+
+				'<input type="radio" name="answer" class="option4 yay" id="ans" value="nope" />'+"<span class='option1'>"+ questions[questionCount].answerOptions[3] +'</span>' +'<br>'+
+				'<button type="sumbit" id="sumbitButton" class="button" name="submit" value="sumbit">Submit!</button>'+
+			'</form>'+
+			'<p id="answerText">'+ questions[questionCount].answerText +'</p>';

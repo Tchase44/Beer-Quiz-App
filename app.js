@@ -26,12 +26,13 @@ var questions = [{
 }];
 
 var questionCount = 0;
-
+var meterFiller = 0;
 
 $(document).ready(function(){
-
-	$('button#sumbitButton').hide();
+	
 	$('form#js-form').hide();
+	$('button#sumbitButton').hide();
+	$("button#nextButton").hide();
 
 	$('button#startButton').click(function(event){
 		event.preventDefault();
@@ -45,41 +46,67 @@ $(document).ready(function(){
 
 	$('button#sumbitButton').click(function(event){
 		event.preventDefault();
-		display();
+		// display();
 		checkAnswer();
+		nextQ();
 	});
-	// display();
+	$('button#nextButton').click(function(event){
+		event.preventDefault();
+		// nextQ();
+		removeCheck();
+		display();
+		$('button#nextButton').hide();
+		// endOfQuiz();
+	});	
 });
-
-// function myFunction() {
-// 	$( "#answerText" ).html( $( "input:checked" ).val() + " is checked!" );
-// };
 function checkAnswer(){
 	var a = $( "input:checked" ).val();
 	if (a == questions[questionCount].correctAnswer) {
 		$( "#answerText" ).text(questions[questionCount].answerText);
-		questionCount++;
+		meterFiller++;
+		$('#sumbitButton').hide();
+		$("button#nextButton").show();
 	} else {
 		$('#answerText').text("Wrong!");
-	}
+		$('#sumbitButton').hide();
+		$("button#nextButton").show();		
+	};
+};
+function removeCheck(){
+	$("input:radio").removeAttr("checked");
 };
 
+function nextQ(){
+	questionCount++;
+};
 function display(){
+	var noRight = meterFiller;
+	if (questionCount>=5) {
+		$("form#js-form").hide();
+		$("#answerText").hide();
+		$(".qbox").add('<h2 class="victory">'+'Thats the last one!'+noRight+'of 5 Correct!'+'</h2>');
+	} else {
 	$("form#js-form p").text(questions[questionCount].questionText);
 	$("span.option1").text(questions[questionCount].answerOptions[0]);
 	$("span.option2").text(questions[questionCount].answerOptions[1]);
 	$("span.option3").text(questions[questionCount].answerOptions[2]);
 	$("span.option4").text(questions[questionCount].answerOptions[3]);
-	// questionCount++;
+	$("#answerText").text(" ");
+	$('button#sumbitButton').show();
+	};
 };
+// function endOfQuiz(){
+// 	if (questionCount >= 5) {
+// 		var noRight = meterFiller;
+// 		// $("form#js-form").hide();
+// 		// $("#answerText").hide();
+// 		// $(".qbox").add('<h2 class="victory">'+'Thats the last one!'+noRight+'of 5 Correct!'+'</h2>');
+// 	} else {
+// 		console.log("keep going");
+// 	};
+// };
 
-
-var template ='<form id="js-form">'+
-				'<p id="question">'+ '</p>'+
-				'<input type="radio" name="answer" class="option1 yay" id="ans" value="yup" />'+"<span class='option1'>"+ '</span>' +'<br>'+
-				'<input type="radio" name="answer" class="option2 yay" id="ans" value="nope" />'+"<span class='option1'>"+ '</span>' +'<br>'+
-				'<input type="radio" name="answer" class="option3 yay" id="ans" value="nope" />'+"<span class='option1'>"+ '</span>' +'<br>'+
-				'<input type="radio" name="answer" class="option4 yay" id="ans" value="nope" />'+"<span class='option1'>"+ '</span>' +'<br>'+
-				'<button type="sumbit" id="sumbitButton" class="button" name="submit" value="sumbit">Submit!</button>'+
-			'</form>'+
-			'<p id="answerText">'+ '</p>';
+// function progressing(percent, $element){
+// 	var progressBarWidth = percent * $element.width() /100;
+// 	$element.find('div').animate({width:progressBarWidth},500).html(percent + "%")
+// };
