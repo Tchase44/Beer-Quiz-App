@@ -46,19 +46,18 @@ $(document).ready(function(){
 
 	$('button#sumbitButton').click(function(event){
 		event.preventDefault();
-		// display();
 		checkAnswer();
 		nextQ();
+		fillTheMeter();
 	});
 	$('button#nextButton').click(function(event){
 		event.preventDefault();
-		// nextQ();
 		removeCheck();
 		display();
 		$('button#nextButton').hide();
-		// endOfQuiz();
 	});	
 });
+// check for right answer
 function checkAnswer(){
 	var a = $( "input:checked" ).val();
 	if (a == questions[questionCount].correctAnswer) {
@@ -72,21 +71,30 @@ function checkAnswer(){
 		$("button#nextButton").show();		
 	};
 };
+// removed radio button check...
 function removeCheck(){
 	$("input:radio").removeAttr("checked");
 };
-
+// up question count to load next
 function nextQ(){
 	questionCount++;
 };
+// load question & check for end & reset
 function display(){
 	var noRight = meterFiller;
 	if (questionCount>=5) {
 		$("form#js-form").hide();
-		// $("#answerText").hide();
 		$("p#answerText").text('Thats the last one!'+'You got '+noRight+' of 5 Correct!');
-		// $("p#answerText").append(resetSwitch);
+		
+		$('p#answerText').append('<button>'+'Try Again'+'</button>').click(function(event){
+			event.preventDefault();
+			questionCount = 0;
+			meterFiller = 0;
+			$('form#js-form').show();
+			display();
+		});
 	} else {
+		// loads Next Question
 	$("form#js-form p").text(questions[questionCount].questionText);
 	$("span.option1").text(questions[questionCount].answerOptions[0]);
 	$("span.option2").text(questions[questionCount].answerOptions[1]);
@@ -96,7 +104,29 @@ function display(){
 	$('button#sumbitButton').show();
 	};
 };
-// var resetSwitch = '<button type="sumbit" id="tryAgain" class="button" name="submit" value="next">'+'Try Again?'+'</button>';
+
+function fillTheMeter (){
+	if (meterFiller === 0) {
+	$('div#myBar').css({"width": "0%"});
+	$('div#label span').text('0');
+	} else if (meterFiller === 1) {
+		$('div#myBar').css({"width": "20%"});
+		$('div#label span').text('20');
+	} else if (meterFiller === 2) {
+		$('div#myBar').css({"width": "40%"});
+		$('div#label span').text('40');
+	} else if (meterFiller === 3) {
+		$('div#myBar').css({"width": "60%"});
+		$('div#label span').text('60');
+	} else if (meterFiller === 4) {
+		$('div#myBar').css({"width": "80%"});
+		$('div#label span').text('80');
+	} else if (meterFiller === 5) {
+		$('div#myBar').css({"width": "100%"});
+		$('div#label span').text('100');
+	};
+};
+
 
 // function progressing(percent, $element){
 // 	var progressBarWidth = percent * $element.width() /100;
