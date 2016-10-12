@@ -86,7 +86,7 @@ function display(){
 		$("form#js-form").hide();
 		$("p#answerText").text('Thats the last one!'+'You got '+noRight+' of 5 Correct!');
 		
-		$('p#answerText').append('<button>'+'Try Again'+'</button>').click(function(event){
+		$('p#answerText').append('<button Class="button">'+'Try Again'+'</button>').click(function(event){
 			event.preventDefault();
 			questionCount = 0;
 			meterFiller = 0;
@@ -106,22 +106,22 @@ function display(){
 };
 
 function fillTheMeter (){
-	if (meterFiller === 0) {
+	if (questionCount === 0) {
 	$('div#myBar').css({"width": "0%"});
 	$('div#label span').text('0');
-	} else if (meterFiller === 1) {
+	} else if (questionCount === 1) {
 		$('div#myBar').css({"width": "20%"});
 		$('div#label span').text('20');
-	} else if (meterFiller === 2) {
+	} else if (questionCount === 2) {
 		$('div#myBar').css({"width": "40%"});
 		$('div#label span').text('40');
-	} else if (meterFiller === 3) {
+	} else if (questionCount === 3) {
 		$('div#myBar').css({"width": "60%"});
 		$('div#label span').text('60');
-	} else if (meterFiller === 4) {
+	} else if (questionCount === 4) {
 		$('div#myBar').css({"width": "80%"});
 		$('div#label span').text('80');
-	} else if (meterFiller === 5) {
+	} else if (questionCount === 5) {
 		$('div#myBar').css({"width": "100%"});
 		$('div#label span').text('100');
 	};
