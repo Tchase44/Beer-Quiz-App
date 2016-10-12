@@ -83,8 +83,9 @@ function display(){
 	var noRight = meterFiller;
 	if (questionCount>=5) {
 		$("form#js-form").hide();
-		$("#answerText").hide();
-		$(".qbox").add('<h2 class="victory">'+'Thats the last one!'+noRight+'of 5 Correct!'+'</h2>');
+		// $("#answerText").hide();
+		$("p#answerText").text('Thats the last one!'+'You got '+noRight+' of 5 Correct!');
+		// $("p#answerText").append(resetSwitch);
 	} else {
 	$("form#js-form p").text(questions[questionCount].questionText);
 	$("span.option1").text(questions[questionCount].answerOptions[0]);
@@ -95,16 +96,7 @@ function display(){
 	$('button#sumbitButton').show();
 	};
 };
-// function endOfQuiz(){
-// 	if (questionCount >= 5) {
-// 		var noRight = meterFiller;
-// 		// $("form#js-form").hide();
-// 		// $("#answerText").hide();
-// 		// $(".qbox").add('<h2 class="victory">'+'Thats the last one!'+noRight+'of 5 Correct!'+'</h2>');
-// 	} else {
-// 		console.log("keep going");
-// 	};
-// };
+// var resetSwitch = '<button type="sumbit" id="tryAgain" class="button" name="submit" value="next">'+'Try Again?'+'</button>';
 
 // function progressing(percent, $element){
 // 	var progressBarWidth = percent * $element.width() /100;

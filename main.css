@@ -1,6 +1,7 @@
 body{
- background-image: url('beerbox.jpg');
- background-size: 700px 600px;
+ /*background-image: url('beerbox.jpg');*/
+ /*background-size: 700px 600px;*/
+ background-color: lightgrey;
  color: white;
 }
 /*head line formaatting*/
